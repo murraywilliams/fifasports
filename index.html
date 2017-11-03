@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>FIFA Tournament Generator</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" href="css/styles.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    </head>
+    <style>
+      input {
+        width: 25%;
+        margin: 0 10px;
+      }
+      .fixtures {
+
+      }
+
+    </style>
+    <body>
+      <div class="container">
+        <div class="row">
+            <div class="add-player">
+              Player name: <input type="text" id="playername">
+              <button onClick="addPlayer();">Add New Player</button>
+            </div>
+            <div class="row">
+                <h2>Fixtures</h2>
+              <div id="fixtures">
+
+                  <!-- <div class="col-md-6"><div class="col-md-4 text-center"><span>Murray</span><input type="number" /></div><div class="col-md-4 text-center"><span>VS</span></div><div class="col-md-4 text-center"><input type="number" /><span>Sam</span></div></div> -->
+                  <!-- <div class="col-md-6">
+                    <div class="col-md-4 text-center"><span>Frank</span><input type="number" /></div>
+                    <div class="col-md-4 text-center"><span>VS</span></div>
+                    <div class="col-md-4 text-center"><input type="number" /><span>Don</span></div>
+                  </div> -->
+              </div>
+            </div>
+        </div>
+            <div class="row">
+                <button onclick="generateLeaderboard();">Leaderboard</button>
+                <button onclick="calcFixtures();">Fixtures</button>
+              </div>
+
+              <div class="row">
+                  <table class="table">
+                      <thead>
+                        <tr>
+                          <th>Player</th>
+                          <th>Played</th>
+                          <th>Wins</th>
+                          <th>Draws</th>
+                          <th>Losses</th>
+                          <th>Scored</th>
+                          <th>Against</th>
+                          <th>Points</th>
+                        </tr>
+                      </thead>
+                      <tbody id="leaderboard">
+                    </tbody>
+                  </table>
+              </div>
+        </div>
+
+        <script type="text/javascript" src="js/scripts.js"></script>
+        <!-- <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
+    </body>
+</html>
