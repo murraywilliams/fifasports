@@ -14,6 +14,9 @@ class App extends Component {
     }
     this.handlePlayerChange = this.handlePlayerChange.bind(this);
     this.handlePlayerSubmit = this.handlePlayerSubmit.bind(this);
+    this.handleTeamChange = this.handleTeamChange.bind(this);
+    this.handleTeamSubmit = this.handleTeamSubmit.bind(this);
+
   }
   // manage changes on our form input
   handlePlayerChange(e) {
@@ -39,8 +42,31 @@ class App extends Component {
     });
   }
 
+  handleTeamChange(e) {
+    this.setState({
+      [e.target.name]: e.target.value
+    });
+  }
+
+  handleTeamSubmit(e) {
+    e.preventDefault();
+    // create space in FDB to store form submits
+    const teamsRef = firebase.database().ref('teams');
+    // grab values inputted into form
+    const team = {
+      name: this.state.teamName
+    }
+    // send copy of object up to Firebase
+    teamsRef.push(team);
+    // clear out form input
+    this.setState({
+      teamName: '',
+    });
+  }
+
   componentDidMount() {
     const playersRef = firebase.database().ref('players');
+    const teamsRef = firebase.database().ref('teams');
     playersRef.on('value', (snapshot) => {
       let players = snapshot.val();
       let newState = [];
@@ -54,11 +80,30 @@ class App extends Component {
         players: newState
       });
     });
+
+    teamsRef.on('value', (snapshot) => {
+      let teams = snapshot.val();
+      let newTeamsState = [];
+      for (let team in teams) {
+        newTeamsState.push({
+          id: team,
+          name: teams[team].name
+        });
+      }
+      this.setState({
+        teams: newTeamsState
+      });
+    });
   }
 
   removePlayer(playerId) {
     const playerRef = firebase.database().ref(`/players/${playerId}`);
     playerRef.remove();
+  }
+
+  removeTeam(teamId) {
+    const teamRef = firebase.database().ref(`/teams/${teamId}`);
+    teamRef.remove();
   }
 
   render() {
@@ -111,10 +156,26 @@ class App extends Component {
               </section>
             </div>
             <div className='col-md-6'>
-
-            </div>
+            <section className='display-item'>
+              <div className="wrapper">
+                <ul>
+                  {this.state.teams.map((team) => {
+                    return (
+                      <li key={team.id}>
+                        <h3>{team.name}</h3>
+                        <div className="right-side">
+                          <button className="edit--btn" onClick={() => this.removeTeam(team.id)}><span className="fa fa-lg fa-edit"></span></button>
+                          <button className="delete--btn" onClick={() => this.removeTeam(team.id)}><span className="fa fa-lg fa-trash"></span></button>
+                        </div>
+                      </li>
+                    )
+                  })}
+                </ul>
+              </div>
+            </section>
+          </div> {/*end of col 6*/}
           </div> {/*end of container */}
-        </div> 
+        </div>
     );
   }
 }
