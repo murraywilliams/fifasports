@@ -89,8 +89,8 @@ class App extends Component {
                         <li key={player.id}>
                           <h3>{player.name}</h3>
                           <div className="right-side">
-                            <button class="edit--btn" onClick={() => this.removePlayer(player.id)}><span class="fa fa-lg fa-edit"></span></button>
-                            <button class="delete--btn" onClick={() => this.removePlayer(player.id)}><span class="fa fa-lg fa-trash"></span></button>
+                            <button className="edit--btn" onClick={() => this.removePlayer(player.id)}><span className="fa fa-lg fa-edit"></span></button>
+                            <button className="delete--btn" onClick={() => this.removePlayer(player.id)}><span className="fa fa-lg fa-trash"></span></button>
                           </div>
                         </li>
                       )
@@ -103,10 +103,10 @@ class App extends Component {
           <div className='container'>
             <div className="col-md-6">
               <section className='add-item'>
-                <h3>Create new Player</h3>
+                <h3>Create new Team</h3>
                   <form onSubmit={this.handlePlayerSubmit}>
-                    <input type="text" name="playerName" placeholder="Enter a player name" onChange={this.handlePlayerChange} value={this.state.playerName} />
-                    <button>Add Player</button>
+                    <input type="text" name="teamName" placeholder="Enter a team name" onChange={this.handlePlayerChange} value={this.state.playerName} />
+                    <button>Add Team</button>
                   </form>
               </section>
             </div>
