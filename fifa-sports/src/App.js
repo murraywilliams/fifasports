@@ -104,8 +104,8 @@ class App extends Component {
             <div className="col-md-6">
               <section className='add-item'>
                 <h3>Create new Team</h3>
-                  <form onSubmit={this.handlePlayerSubmit}>
-                    <input type="text" name="teamName" placeholder="Enter a team name" onChange={this.handlePlayerChange} value={this.state.playerName} />
+                  <form onSubmit={this.handleTeamSubmit}>
+                    <input type="text" name="teamName" placeholder="Enter a team name" onChange={this.handleTeamChange} value={this.state.teamName} />
                     <button>Add Team</button>
                   </form>
               </section>
