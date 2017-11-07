@@ -8,7 +8,7 @@ class App extends Component {
     super();
     this.state = {
       playerName: '',
-      players: []
+      players: [],
     }
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -83,8 +83,10 @@ class App extends Component {
                     return (
                       <li key={player.id}>
                         <h3>{player.name}</h3>
+                        <div className="right-side">
                           <button class="edit--btn" onClick={() => this.removePlayer(player.id)}><span class="fa fa-lg fa-edit"></span></button>
                           <button class="delete--btn" onClick={() => this.removePlayer(player.id)}><span class="fa fa-lg fa-trash"></span></button>
+                        </div>
                       </li>
                     )
                   })}
