@@ -19,6 +19,11 @@ header h1 {
 
 }
 
+.col-md-6 {
+  width:45%;
+  margin:0 2.5%;
+}
+
 .fa {
   font-size: 22px;
   transform: translateY(50deg);
@@ -49,14 +54,11 @@ header i {
   padding: 30px 18px;
   box-shadow: 0 3px 4px 0 rgba(0,0,0,.14), 0 3px 3px -2px rgba(0,0,0,.12), 0 1px 8px 0 rgba(0,0,0,.2);
   margin-bottom: 34px;
-  width: 40%;
   max-height: 200px;
   margin-right: auto;
 }
 
 .display-item {
-  width: 45%;
-  margin-left: 50px;
 
 }
 

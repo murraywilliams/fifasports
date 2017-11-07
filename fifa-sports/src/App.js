@@ -9,19 +9,21 @@ class App extends Component {
     this.state = {
       playerName: '',
       players: [],
+      teamName: '',
+      teams: []
     }
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handlePlayerChange = this.handlePlayerChange.bind(this);
+    this.handlePlayerSubmit = this.handlePlayerSubmit.bind(this);
   }
   // manage changes on our form input
-  handleChange(e) {
+  handlePlayerChange(e) {
     this.setState({
       [e.target.name]: e.target.value
     });
   }
   // method to grab form values and push to Firebase on
   // submit of our form
-  handleSubmit(e) {
+  handlePlayerSubmit(e) {
     e.preventDefault();
     // create space in FDB to store form submits
     const playersRef = firebase.database().ref('players');
@@ -62,39 +64,57 @@ class App extends Component {
   render() {
     return (
         <div className='app'>
-        <header>
-            <div className='wrapper'>
-              <h1>Fifa Sports</h1>
+          <header>
+              <div className='wrapper'>
+                <h1>Fifa Sports</h1>
+
+              </div>
+          </header>
+          <div className="container">
+            <div className='col-md-6'>
+              <section className='add-item'>
+                <h3>Create new Player</h3>
+                  <form onSubmit={this.handlePlayerSubmit}>
+                    <input type="text" name="playerName" placeholder="Enter a player name" onChange={this.handlePlayerChange} value={this.state.playerName} />
+                    <button>Add Player</button>
+                  </form>
+              </section>
+            </div> {/*end of col-6*/}
+            <div className='col-md-6'>
+              <section className='display-item'>
+                <div className="wrapper">
+                  <ul>
+                    {this.state.players.map((player) => {
+                      return (
+                        <li key={player.id}>
+                          <h3>{player.name}</h3>
+                          <div className="right-side">
+                            <button class="edit--btn" onClick={() => this.removePlayer(player.id)}><span class="fa fa-lg fa-edit"></span></button>
+                            <button class="delete--btn" onClick={() => this.removePlayer(player.id)}><span class="fa fa-lg fa-trash"></span></button>
+                          </div>
+                        </li>
+                      )
+                    })}
+                  </ul>
+                </div>
+              </section>
+            </div> {/*end of col 6*/}
+          </div>
+          <div className='container'>
+            <div className="col-md-6">
+              <section className='add-item'>
+                <h3>Create new Player</h3>
+                  <form onSubmit={this.handlePlayerSubmit}>
+                    <input type="text" name="playerName" placeholder="Enter a player name" onChange={this.handlePlayerChange} value={this.state.playerName} />
+                    <button>Add Player</button>
+                  </form>
+              </section>
+            </div>
+            <div className='col-md-6'>
 
             </div>
-        </header>
-        <div className='container'>
-          <section className='add-item'>
-            <h3>Create new Player</h3>
-              <form onSubmit={this.handleSubmit}>
-                <input type="text" name="playerName" placeholder="Enter a player name" onChange={this.handleChange} value={this.state.playerName} />
-                <button>Add Player</button>
-              </form>
-          </section>
-          <section className='display-item'>
-              <div className="wrapper">
-                <ul>
-                  {this.state.players.map((player) => {
-                    return (
-                      <li key={player.id}>
-                        <h3>{player.name}</h3>
-                        <div className="right-side">
-                          <button class="edit--btn" onClick={() => this.removePlayer(player.id)}><span class="fa fa-lg fa-edit"></span></button>
-                          <button class="delete--btn" onClick={() => this.removePlayer(player.id)}><span class="fa fa-lg fa-trash"></span></button>
-                        </div>
-                      </li>
-                    )
-                  })}
-                </ul>
-              </div>
-          </section>
-          </div>
-      </div>
+          </div> {/*end of container */}
+        </div> 
     );
   }
 }
