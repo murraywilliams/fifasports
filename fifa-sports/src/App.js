@@ -134,7 +134,7 @@ class App extends Component {
                         <li key={player.id}>
                           <h3>{player.name}</h3>
                           <div className="right-side">
-                            <button className="edit--btn" onClick={() => this.removePlayer(player.id)}><span className="fa fa-lg fa-edit"></span></button>
+                            {/* <button className="edit--btn" onClick={() => this.removePlayer(player.id)}><span className="fa fa-lg fa-edit"></span></button> */}
                             <button className="delete--btn" onClick={() => this.removePlayer(player.id)}><span className="fa fa-lg fa-trash"></span></button>
                           </div>
                         </li>
@@ -164,7 +164,7 @@ class App extends Component {
                       <li key={team.id}>
                         <h3>{team.name}</h3>
                         <div className="right-side">
-                          <button className="edit--btn" onClick={() => this.removeTeam(team.id)}><span className="fa fa-lg fa-edit"></span></button>
+                          {/* <button className="edit--btn" onClick={() => this.removeTeam(team.id)}><span className="fa fa-lg fa-edit"></span></button> */}
                           <button className="delete--btn" onClick={() => this.removeTeam(team.id)}><span className="fa fa-lg fa-trash"></span></button>
                         </div>
                       </li>
