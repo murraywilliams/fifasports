@@ -58,10 +58,6 @@ header i {
   margin-right: auto;
 }
 
-.display-item {
-
-}
-
 .display-item button {
   margin-left: auto;
   display: block;
@@ -118,7 +114,7 @@ li:hover {
 
 li .right-side {
   display:flex;
-
+  width: 40%;
 }
 
 h2 {
