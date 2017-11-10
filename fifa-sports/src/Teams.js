@@ -22,7 +22,7 @@ class Teams extends Component {
   handleSubmit(e) {
     e.preventDefault();
     // create space in FDB to store form submits
-    const teamsRef = firebase.database().ref('teams');
+    const teamsRef = firebase.database().ref('tournaments/teams');
     // grab values inputted into form
     const team = {
       name: this.state.teamName

@@ -23,8 +23,9 @@ class Players extends Component {
   // submit of our form
   handleSubmit(e) {
     e.preventDefault();
+    let tournamentID = this.props.tournamentID;
     // create space in FDB to store form submits
-    const playersRef = firebase.database().ref('players');
+    const playersRef = firebase.database().ref(`tournaments/${tournamentID}/players`);
     // grab values inputted into form
     const player = {
       name: this.state.playerName
@@ -38,6 +39,7 @@ class Players extends Component {
   }
 
   componentDidMount() {
+    
     const playersRef = firebase.database().ref('players');
     playersRef.on('value', (snapshot) => {
       let players = snapshot.val();
