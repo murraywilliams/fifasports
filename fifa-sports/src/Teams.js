@@ -22,7 +22,8 @@ class Teams extends Component {
   handleSubmit(e) {
     e.preventDefault();
     // create space in FDB to store form submits
-    const teamsRef = firebase.database().ref('tournaments/teams');
+    let tournamentID = this.props.tournamentID;
+    const teamsRef = firebase.database().ref(`tournaments/${tournamentID}/teams`);
     // grab values inputted into form
     const team = {
       name: this.state.teamName
@@ -36,7 +37,8 @@ class Teams extends Component {
   }
 
   componentDidMount() {
-    const teamsRef = firebase.database().ref('teams');
+    let tournamentID = this.props.tournamentID;
+    const teamsRef = firebase.database().ref(`tournaments/${tournamentID}/teams`);
     teamsRef.on('value', (snapshot) => {
       let teams = snapshot.val();
       let newState = [];
@@ -53,7 +55,8 @@ class Teams extends Component {
   }
 
   removeTeam(teamId) {
-    const teamRef = firebase.database().ref(`/teams/${teamId}`);
+    let tournamentID = this.props.tournamentID;
+    const teamRef = firebase.database().ref(`tournaments/${tournamentID}/teams/${teamId}`);
     teamRef.remove();
   }
 
@@ -63,8 +66,8 @@ class Teams extends Component {
             <div className="col-md-6">
               <section className='add-item'>
                 <h3>Create new Team</h3>
-                  <form onSubmit={this.handleTeamSubmit}>
-                    <input type="text" name="teamName" placeholder="Enter a team name" onChange={this.handleTeamChange} value={this.state.teamName} />
+                  <form onSubmit={this.handleSubmit}>
+                    <input type="text" name="teamName" placeholder="Enter a team name" onChange={this.handleChange} value={this.state.teamName} />
                     <button>Add Team</button>
                   </form>
               </section>

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import firebase from './firebase';
 import './App.css';
-import { BrowserRouter, Route, Link, Redirect, Switch} from 'react-router-dom';
+import { BrowserRouter, Route, Redirect, Switch} from 'react-router-dom';
 
 // Components
 import CreateTournament from './CreateTournament.js';
@@ -13,7 +13,8 @@ class App extends Component {
     this.state = {
       tournamentName: '',
       tournamentID: '',
-      redirect : false
+      redirect : false,
+      tournamentsList: []
     }
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -73,6 +74,9 @@ class App extends Component {
                     <input type="text" placeholder="Please enter a tournament name" value={this.state.tournamentName} onChange={this.handleChange} />
                     <button>Create Tournament</button>
                   </form>
+                  <div className="tournamentList">
+                    
+                  </div>
                 </div>
           </div>
         </BrowserRouter>

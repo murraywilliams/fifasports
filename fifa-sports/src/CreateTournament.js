@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import firebase from './firebase';
 import './App.css';
 
 // Components
@@ -22,7 +21,7 @@ class CreateTournament extends Component {
               </div>
           </header>
           <Players tournamentID={this.props.location.state} />
-          <Teams />
+          <Teams tournamentID={this.props.location.state} />
           </div>
     );
   }

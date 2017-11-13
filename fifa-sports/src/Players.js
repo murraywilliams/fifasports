@@ -39,8 +39,8 @@ class Players extends Component {
   }
 
   componentDidMount() {
-    
-    const playersRef = firebase.database().ref('players');
+    let tournamentID = this.props.tournamentID;
+    const playersRef = firebase.database().ref(`tournaments/${tournamentID}/players`);
     playersRef.on('value', (snapshot) => {
       let players = snapshot.val();
       let newState = [];
@@ -57,7 +57,8 @@ class Players extends Component {
   }
 
   removePlayer(playerId) {
-    const playerRef = firebase.database().ref(`/players/${playerId}`);
+    let tournamentID = this.props.tournamentID;
+    const playerRef = firebase.database().ref(`tournaments/${tournamentID}/players/${playerId}`);
     playerRef.remove();
   }
 
