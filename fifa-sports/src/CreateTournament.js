@@ -9,7 +9,7 @@ class CreateTournament extends Component {
 
   componentDidMount() {
     //let receivedMessage = this.props.location.state
-  console.log(this.props.location.state);
+  console.log(this.props);
   }
 
   render() {
