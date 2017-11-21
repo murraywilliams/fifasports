@@ -50,7 +50,7 @@ class App extends Component {
       return (
         <BrowserRouter>
           <Switch>
-            <Route path="/createTournament/" component={CreateTournament}/>
+            <Route path="/" component={CreateTournament}/>
             <Redirect from="/" to={{
               pathname:`/createTournament/${this.state.tournamentName}`,
               state: this.state.tournamentID
