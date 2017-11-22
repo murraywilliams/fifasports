@@ -33,7 +33,7 @@ class App extends Component {
       name : this.state.tournamentName
     }
 
-    let newRef =tournamentRef.push(newTournament);
+    let newRef = tournamentRef.push(newTournament);
     /*this.setState ({
       tournamentName : ''
     })*/
@@ -50,10 +50,10 @@ class App extends Component {
       return (
         <BrowserRouter>
           <Switch>
-            <Route path="/" component={CreateTournament}/>
-            <Redirect from="/" to={{
-              pathname:`/createTournament/${this.state.tournamentName}`,
-              state: this.state.tournamentID
+            <Route exact path={`/${this.state.tournamentName}`} component={CreateTournament}/>
+            <Redirect exact from="/" to={{
+              pathname: `/${this.state.tournamentName}`,
+              state: {tournamentID:this.state.tournamentID}
               }} />
           </Switch>
         </BrowserRouter>
